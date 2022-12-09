@@ -113,7 +113,7 @@ class ExplainHandler(idaapi.action_handler_t):
     def activate(self, ctx):
         decompiler_output = ida_hexrays.decompile(idaapi.get_screen_ea())
         v = ida_hexrays.get_widget_vdui(ctx.widget)
-        query_model_async("Can you explain what the following C function does and suggest a better name for it?\n"
+        query_model_async("이 C언어 함수는 무엇을 하는지 설명해 주세요. 그리고 이 함수의 이름을 추천해 주세요.\n"
                           + str(decompiler_output),
                           functools.partial(comment_callback, address=idaapi.get_screen_ea(), view=v))
         return 1
